@@ -1,0 +1,68 @@
+﻿<Window x:Class="ProjMecha.WPF.Windows.StoreItemInfoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjMecha.WPF.Windows"
+        mc:Ignorable="d"
+        Title="StoreItemInfoWindow" Height="450" Width="800">
+    <Window.Resources>
+        <SolidColorBrush x:Key="ColorBackPrimary">#FFFFFF</SolidColorBrush>
+        <SolidColorBrush x:Key="ColorBackSecondary">#FFFFE1</SolidColorBrush>
+        <SolidColorBrush x:Key="ColorAccent">#FF9C1A</SolidColorBrush>
+
+        <FontFamily x:Key="FontMain">Tw Cen MT</FontFamily>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="{StaticResource FontMain}"/>
+            <Setter Property="Margin" Value="5, 3"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="FontFamily" Value="{StaticResource FontMain}"/>
+            <Setter Property="Margin" Value="5, 3"/>
+            <Setter Property="FontSize" Value="15"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="FontFamily" Value="{StaticResource FontMain}"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Margin" Value="50, 12"/>
+            <Setter Property="Background" Value="{StaticResource ColorBackPrimary}"/>
+        </Style>
+        <Style TargetType="StackPanel">
+            <Setter Property="Margin" Value="5, 10"/>
+            <Setter Property="Background" Value="{StaticResource ColorBackSecondary}"/>
+        </Style>
+    </Window.Resources>
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Top">
+            <TextBlock Text="Название" />
+            <TextBox Text="{Binding Path=Title}"/>
+            <TextBlock Text="Описание"/>
+            <TextBox Text="{Binding Path=Description}" MaxLines="4"/>
+            <TextBlock  Text="Цена"/>
+            <TextBox Text="{Binding Path=PricePreview}"/>
+        </StackPanel>
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Name="StackPanelAttribute">
+            <TextBlock Text="Ключ:"/>
+            <TextBox MinWidth="150" Text="{Binding Path=Key}"/>
+            <TextBlock Text="Значение:"/>
+            <TextBox MinWidth="150" Text="{Binding Path=Value}"/>
+            <Button Content="Добавить" Click="Button_Click_AddData"/>
+        </StackPanel>
+        <Button DockPanel.Dock="Top" Content="Сохранить и выйти" Click="Button_Click_SaveAll"/>
+        <DataGrid DockPanel.Dock="Top" x:Name="DataGridPairs" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="УДАЛИТЬ">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Margin="0" Content="[----]" Click="Button_Click_DeleteData"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Тип" Binding="{Binding Path=ProductAttribute.Name}"/>
+                <DataGridTextColumn Header="Значение" Binding="{Binding Path=Value}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </DockPanel>
+</Window>

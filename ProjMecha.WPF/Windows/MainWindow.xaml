@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjMecha.WPF.Windows"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" MinHeight="250" Width="800" MinWidth="350">
     <Window.Resources>
         <SolidColorBrush x:Key="ColorBackPrimary">#FFFFFF</SolidColorBrush>
         <SolidColorBrush x:Key="ColorBackSecondary">#FFFFE1</SolidColorBrush>

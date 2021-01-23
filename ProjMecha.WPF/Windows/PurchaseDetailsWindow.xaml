@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjMecha.WPF.Windows"
         mc:Ignorable="d"
-        Title="PurchadeDetailsWindow" Height="450" Width="400">
+        Title="PurchadeDetailsWindow" MinHeight="450" Height="450" MinWidth="300" Width="800">
     <Window.Resources>
         <SolidColorBrush x:Key="ColorBackPrimary">#FFFFFF</SolidColorBrush>
         <SolidColorBrush x:Key="ColorBackSecondary">#FFFFE1</SolidColorBrush>

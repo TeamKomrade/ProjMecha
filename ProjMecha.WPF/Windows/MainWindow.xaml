@@ -37,12 +37,14 @@
         </Style>
     </Window.Resources>
     <DockPanel>
-        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
-            <Image Source="Resources/service_logo.png" MaxHeight="30" MaxWidth="30" Margin="4, 5"/>
+        <DockPanel DockPanel.Dock="Top" LastChildFill="False">
+            <Image Source="Resources/service_logo.png" MaxHeight="32" MaxWidth="32" Margin="4, 5"/>
             <TextBlock FontSize="22" TextAlignment="Justify" VerticalAlignment="Center">
-                Автосервис "Доеду Сам"
+                Автосервис
+                <TextBlock Text="UNDEFINED" x:Name="TextBlockCompanyName"/>
             </TextBlock>
-        </StackPanel>
+            <Button Content="О компании" DockPanel.Dock="Right" Click="Button_Click_Settings"/>
+        </DockPanel>
         <TabControl TabStripPlacement="Left" DockPanel.Dock="Bottom">
             <TabItem Header="Клиенты">
                 <StackPanel>

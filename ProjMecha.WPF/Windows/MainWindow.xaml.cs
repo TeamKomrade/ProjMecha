@@ -44,6 +44,7 @@ namespace ProjMecha.WPF.Windows
 
         public void LoadInfoFromDb()
         {
+            TextBlockCompanyName.Text = Database.GetCompanyDetails().CompanyName;
             DataGridClients.ItemsSource = Database.Credentials.GetOnlyClients().Include(c => c.PersonalData).ToList();
             DataGridEmployees.ItemsSource = Database.Credentials.GetOnlyEmployees().Include(c => c.PersonalData).ToList();
             DataGridProducts.ItemsSource = Database.StoreItems.GetOnlyProducts().Include(c => c.AttributeProductPairs).ThenInclude(ap => ap.ProductAttribute).ToList();
@@ -109,6 +110,11 @@ namespace ProjMecha.WPF.Windows
             builder.Append($"Данные о {item.Title} [{item.Price}]\nОписание: {item.Description}");
             foreach (var pair in item.AttributeProductPairs) builder.Append($"\n{pair.ProductAttribute.Name}: {pair.Value}");
             MessageBox.Show(builder.ToString());
+        }
+
+        private void Button_Click_Settings(object sender, RoutedEventArgs e)
+        {
+            new SettingsWindow(this).Show();
         }
     }
 }

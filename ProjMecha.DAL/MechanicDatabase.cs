@@ -65,6 +65,13 @@ namespace ProjMecha.DAL
         {
             if (Database.EnsureCreated())
             {
+                object info = new CompanyDetails()
+                {
+                    CompanyName = "ООО \"Доеду Сам\"",
+                    Address = "ул. Чкалова 42/1",
+                    Phone = "+71234567890"
+                };
+                this.TryAction(DatabaseActions.ADD, info);
                 object creds = new Credentials()
                 {
                     Login = "admin",
@@ -86,5 +93,7 @@ namespace ProjMecha.DAL
                 this.TryAction(DatabaseActions.UPDATE, creds2);
             }
         }
+
+        public CompanyDetails GetCompanyDetails() => CompanyDetails.FirstOrDefault();
     }
 }

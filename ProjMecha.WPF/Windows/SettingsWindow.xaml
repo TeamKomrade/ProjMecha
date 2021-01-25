@@ -1,11 +1,11 @@
-﻿<Window x:Class="ProjMecha.WPF.Windows.LoginWindow"
+﻿<Window x:Class="ProjMecha.WPF.Windows.SettingsWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjMecha.WPF.Windows"
         mc:Ignorable="d"
-        Title="LoginWindow" MinHeight="359" Height="350" MinWidth="400" Width="400">
+        Title="SettingsWindow" Height="350" Width="400" MinHeight="350" MinWidth="400">
     <Window.Resources>
         <SolidColorBrush x:Key="ColorBackPrimary">#FFFFFF</SolidColorBrush>
         <SolidColorBrush x:Key="ColorBackSecondary">#FFFFE1</SolidColorBrush>
@@ -16,39 +16,43 @@
         <Style TargetType="TextBlock">
             <Setter Property="FontFamily" Value="{StaticResource FontMain}"/>
             <Setter Property="Margin" Value="5, 3"/>
-            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="DockPanel.Dock" Value="Top"/>
         </Style>
         <Style TargetType="TextBox">
             <Setter Property="FontFamily" Value="{StaticResource FontMain}"/>
             <Setter Property="Margin" Value="5, 3"/>
-            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="DockPanel.Dock" Value="Top"/>
         </Style>
         <Style TargetType="Button">
             <Setter Property="FontFamily" Value="{StaticResource FontMain}"/>
-            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="FontSize" Value="24"/>
             <Setter Property="Margin" Value="50, 12"/>
             <Setter Property="Background" Value="{StaticResource ColorBackPrimary}"/>
+            <Setter Property="DockPanel.Dock" Value="Top"/>
         </Style>
         <Style TargetType="StackPanel">
             <Setter Property="Margin" Value="5, 10"/>
             <Setter Property="Background" Value="{StaticResource ColorBackSecondary}"/>
         </Style>
     </Window.Resources>
-    <DockPanel LastChildFill="True" Background="{StaticResource ColorBackPrimary}">
-        <TextBlock DockPanel.Dock="Top" TextAlignment="Center">
-             Консоль управления
-            <LineBreak/>
-            <TextBlock Text="UNDEFINED" x:Name="TextBlockCompanyName"/>
-        </TextBlock>
-        <StackPanel DockPanel.Dock="Top">
-            <TextBlock Text="Логин"/>
-            <TextBox Text="{Binding Path=Login}"/>
-        </StackPanel>
-        <StackPanel DockPanel.Dock="Top">
-            <TextBlock Text="Пароль"/>
-        <TextBox Text="{Binding Path=Password}"/>
-        </StackPanel >
-        
-        <Button DockPanel.Dock="Top" Content="Войти" Click="Button_Click_CheckCredentials"/>
-    </DockPanel>
+
+    <Grid>
+        <DockPanel>
+            <StackPanel DockPanel.Dock="Top">
+                <TextBlock Text="Название компании"/>
+                <TextBox Text="{Binding Path=CompanyName}"/>
+            </StackPanel>
+            <StackPanel DockPanel.Dock="Top">
+                <TextBlock Text="Адрес"/>
+                <TextBox Text="{Binding Path=Address}"/>
+            </StackPanel>
+            <StackPanel DockPanel.Dock="Top">
+                <TextBlock Text="Телефон"/>
+                <TextBox Text="{Binding Path=Phone}"/>
+            </StackPanel>
+            <Button Content="Применить" Click="Button_Click_ApplyChanges"/>
+        </DockPanel>
+    </Grid>
 </Window>

@@ -29,9 +29,9 @@ namespace ProjMecha.WPF.Windows
             _db = new MechanicDatabase();
             _db.NotifyAboutAction += (message) => { MessageBox.Show(message); };
             _db.FillDefaultInfo();
-
             _model = new LoginModel();
             this.DataContext = _model;
+            TextBlockCompanyName.Text = _db.GetCompanyDetails().CompanyName;
         }
 
         private void Button_Click_CheckCredentials(object sender, RoutedEventArgs ev)
